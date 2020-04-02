@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>下拉菜单效果</title>
+		<style type="text/css">
+			@media screen and (min-width:1200px;
+
+			) {
+				html {
+					font-size: 20px;
+				}
+			}
+
+			@media screen and (min-width:800px;
+			) and (max-width:1200px;
+
+			) {
+				html {
+					font-size: 16px;
+				}
+			}
+
+			@media screen and (max-width:800px;
+
+			) {
+				html {
+					font-size: 12px;
+				}
+			}
+
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			div {
+				width: 20rem;
+				height: 4rem;
+				margin: 0 auto;
+				background-color: #00C37E;
+				color: white;
+				padding-left: 2rem;
+				line-height: 4rem;
+				font-style: italic;
+				position: relative;
+				margin-bottom:0.5rem;
+				cursor:pointer;
+			}
+			div:nth-child(1){
+				margin-top:4rem;
+			}
+
+			div em{
+				width: 0;
+				height: 0;
+				border: 0.5rem solid white;
+				border-bottom: 0.5rem solid rgba(0, 0, 0, 0);
+				border-right: 0.5rem solid rgba(0, 0, 0, 0);
+				border-left: 0.5rem solid rgba(0, 0, 0, 0);
+				position: absolute;
+				top: 1.5rem;
+				left: 18rem;
+			}
+
+			.container {
+				width: 20rem;
+				min-height: 1rem;
+				overflow: scroll;
+				margin:0 auto;
+				color: black;
+				border: 0.05rem solid black;
+				line-height: 2rem;
+				padding-left: 1rem;
+				margin-bottom:0.5rem;
+			}
+			
+		</style>
+	</head>
+	<body>
+
+		<div>Click Here <em></em></div>
+		<p class="container" style="display:none">
+			<b>Just look at the arrow above</b> <br>
+			Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
+			laoreet dolore magna aliquam erat volutpat. <br>
+			<b>Crafted by: Reiha Hosseini</b>
+		</p>
+
+		<div>Click Here <em></em></div>
+		<p class="container" style="display:none">
+			<b>Just look at the arrow above</b> <br>
+			Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
+			laoreet dolore magna aliquam erat volutpat. <br>
+			<b>Crafted by: Reiha Hosseini</b>
+		</p>
+
+		<div>Click Here <em></em></div>
+		<p class="container" style="display:none">
+			<b>Just look at the arrow above</b> <br>
+			Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt
+			ut laoreet dolore magna aliquam erat volutpat. <br>
+			<b>Crafted by: Reiha Hosseini</b>
+		</p>
+
+		<script type="text/javascript" style="display:none">
+             var aDiv = document.querySelectorAll("div");
+			 var aP = document.querySelectorAll(".container");
+			 var aEm = document.querySelectorAll("em");
+			 
+			 for(var i=0; i<aDiv.length; i++){
+				 aDiv[i].index = i;
+				 aDiv[i].onclick = function(){
+					 if(aP[this.index].style.display == "none"){
+						 this.style.marginBottom = 0;
+						 aP[this.index].style.display = "block";
+						 aEm[this.index].style.borderTop = "0.5rem solid rgba(0, 0, 0, 0)";
+						 aEm[this.index].style.borderBottom = " 0.5rem solid white";
+					 }else{
+						 this.style.marginBottom = "0.5rem";
+						 aP[this.index].style.display = "none";
+						 aEm[this.index].style.borderTop = "0.5rem solid white";
+						 aEm[this.index].style.borderBottom = "0.5rem solid rgba(0, 0, 0, 0)";
+					 }
+					 
+				 }
+			 }
+		</script>
+	</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>倒计时</title>
+		<style type="text/css">
+			@media screen and (min-width:1200px;) {
+				html{
+					font-size:20px;
+				}
+			}
+			@media screen and (min-width:800px;) and(max-width:1200px;) {
+				html{
+					font-size:16px;
+				}
+			}
+			@media screen and (max-width:800px;) {
+				html{
+					font-size:12px;
+				}
+			}
+			*{
+				margin:0;
+				padding:0;
+				box-sizing:border-box;
+			}
+			div{
+				width:40rem;
+				height:4rem;
+				border:0.1rem solid black;
+				margin: 2rem auto;
+				background-color:lavender;
+			}
+			p {
+			  font-size: 2rem;
+			  float:left;
+			}
+			span{
+				display:block;
+				float:left;
+				margin:1rem;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<span>距离 Jan 5, 2022 15:30:30 还剩: </span>
+			<p id="demo"></p>
+		</div>
+		
+		<script type="text/javascript">
+			// 设置一个想到达的时间日期
+			var countDownDate = new Date("Jan 5, 2022 15:30:30").getTime();
+			
+			// 每隔一秒更新一下
+			var timer = setInterval(function() {
+			
+			    // 得到现在的具体时间
+			    var now = new Date().getTime();
+			    
+			    var distance = countDownDate - now;//相差的时间总数
+			    
+			    // 分别获取days hours minutes seconds 数值
+			    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+			    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+			    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+			    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+			    
+			    // 更新显示区域
+			    document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+			    + minutes + "m " + seconds + "s ";
+			    
+			    // 如果到达设定的数值，清空定时器，并且显示区域EXPIRED 
+			    if (distance < 0) {
+			        clearInterval(timer);
+			        document.getElementById("demo").innerHTML = "EXPIRED";
+			    }
+			}, 1000);
+		</script>
+	</body>
+</html>

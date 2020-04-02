@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>垂直选项卡</title>
+		<style type="text/css">
+			@media screen and (min-width:1200px) {
+				html {
+					font-size: 20px;
+				}
+			}
+
+			@media screen and (min-width:800px;
+
+			) and (max-width:1200px) {
+				html {
+					font-size: 16px;
+				}
+			}
+
+			@media screen and (max-width:800px) {
+				html {
+					font-size: 12px;
+				}
+			}
+
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			#container {
+				width: 65%;
+				height: 30rem;
+				margin: 2rem 20%;
+				/* border: 0.1rem solid black; */
+				overflow: hidden;
+			}
+
+			#left {
+				width: 25%;
+				height: 30rem;
+				background-color: black;
+				color: white;
+				float: left;
+			}
+
+			#left ul {
+				width: 100%;
+				height: 100%;
+				list-style: none;
+			}
+
+			#left ul li {
+				width: 100%;
+				height: 10%;
+				text-align: center;
+				line-height: 3rem;
+				cursor: pointer;
+			}
+
+			#left ul li:hover {
+				background-color: rgba(255, 0, 0, .5);
+			}
+
+			#right {
+				width: 75%;
+				height: 30rem;
+				float: right;
+				position: relative;
+			}
+
+			#right p {
+				width: 100%;
+				height: 100%;
+				padding: 5%;
+				word-spacing: 0.25rem;
+				position: absolute;
+				top: 0;
+				left: 0;
+				text-align: justify;
+			}
+			#right b{
+				font-size:1.5rem;
+				color:red;
+				font-family: 幼圆;
+			}
+			#right span{
+				color:blue;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<div id="left">
+				<ul>
+					<li>London</li>
+					<li>Paris</li>
+					<li>Tokyo</li>
+				</ul>
+			</div>
+			<div id="right">
+				<p style="display:none;">
+					<b>London</b><br>
+					<br><span>London is the capital city of England. </span><br>
+					<br>From the distance, it looked like a skinny tube,
+					but as we got closer, we could see it flesh out before our eyes. It was tubular, all right,
+					but fatter than we could see from far away. Furthermore, we were also astonished to notice
+					that the building was really in two parts: a pagoda sitting on top of a tubular one-story structure.
+					Standing ten feet away, we could marvel at how much of the pagoda was made up of glass windows.
+					Almost everything under the wonderful Chinese roof was made of glass, unlike the tube that it was sitting on,
+					which only had four. Inside, the tube was gloomy, because of the lack of light. Then a steep,
+					narrow staircase took us up inside the pagoda and the light changed dramatically. All those windows let in a
+					flood of sunshine and we could see out for miles across the flat land.
+				</p>
+				<p style="display:none;">
+					<b>Paris</b><br>
+					<br><span>Paris is the capital of France.</span> <br>
+					<br>From the distance, it looked like a skinny tube,
+					but as we got closer, we could see it flesh out before our eyes. It was tubular, all right,
+					but fatter than we could see from far away. Furthermore, we were also astonished to notice
+					that the building was really in two parts: a pagoda sitting on top of a tubular one-story structure.
+					Standing ten feet away, we could marvel at how much of the pagoda was made up of glass windows.
+					Almost everything under the wonderful Chinese roof was made of glass, unlike the tube that it was sitting on,
+					which only had four. Inside, the tube was gloomy, because of the lack of light. Then a steep,
+					narrow staircase took us up inside the pagoda and the light changed dramatically. All those windows let in a
+					flood of sunshine and we could see out for miles across the flat land.
+				</p>
+				<p style="display:none;">
+					<b>Tokyo</b><br>
+					<br><span>Tokyo is the capital of Japan.</span> <br>
+					<br>From the distance, it looked like a skinny tube,
+					but as we got closer, we could see it flesh out before our eyes. It was tubular, all right,
+					but fatter than we could see from far away. Furthermore, we were also astonished to notice
+					that the building was really in two parts: a pagoda sitting on top of a tubular one-story structure.
+					Standing ten feet away, we could marvel at how much of the pagoda was made up of glass windows.
+					Almost everything under the wonderful Chinese roof was made of glass, unlike the tube that it was sitting on,
+					which only had four. Inside, the tube was gloomy, because of the lack of light. Then a steep,
+					narrow staircase took us up inside the pagoda and the light changed dramatically. All those windows let in a
+					flood of sunshine and we could see out for miles across the flat land.
+				</p>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			var aLi = document.querySelectorAll("li");
+			var aP = document.querySelectorAll("p");
+			var right = document.querySelector("#right");
+
+			for (var i = 0; i < aLi.length; i++) {
+				aLi[i].index = i;
+				aLi[i].onclick = function() {
+					if (aP[this.index].style.display == "none") {
+						for(var j=0; j<aP.length; j++){
+							aP[j].style.display = "none";
+							aLi[j].style.backgroundColor = "black";
+						}
+						aP[this.index].style.display = "block";
+						aLi[this.index].style.backgroundColor = "rgba(255,0,0,0.5)";
+						right.style.border = "0.1rem solid black";
+					} else {
+						aP[this.index].style.display = "none";
+						aLi[this.index].style.backgroundColor = "black";
+						right.style.border = "none";
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

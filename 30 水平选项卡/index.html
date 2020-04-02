@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>水平选项卡</title>
+		<style type="text/css">
+			@media screen and (min-width:1200px;
+
+			) {
+				html {
+					font-size: 20px;
+				}
+			}
+
+			@media screen and (min-width:800px;
+			) and (max-width:1200px;
+
+			) {
+				html {
+					font-size: 16px;
+				}
+			}
+
+			@media screen and (max-width:800px;
+
+			) {
+				html {
+					font-size: 12px;
+				}
+			}
+
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			div {
+				width: 60rem;
+				min-height: 11.5rem;
+				margin: 2rem auto;
+				position: relative;
+			}
+
+			ul {
+				width: 60rem;
+				height: 4rem;
+				margin-bottom: 0;
+				border: 0.1rem solid black;
+				list-style: none;
+				overflow: hidden;
+				background-color: black;
+				color: white;
+			}
+
+			ul li {
+				float: left;
+				width: 8rem;
+				height: 4rem;
+				text-align: center;
+				line-height: 4rem;
+				cursor: pointer;
+				border-right: 0.05rem solid white;
+			}
+
+			ul li:nth-child(4) {
+				float: right;
+				width: 4rem;
+				height: 4rem;
+				margin-top: 0.5rem;
+				border: 0;
+			}
+
+			ul li:nth-child(4):hover {
+				background-color: black;
+			}
+
+			ul li .icon {
+				display: block;
+				width: 2rem;
+				height: 0.25rem;
+				background-color: white;
+				margin: 0.5rem;
+			}
+
+			ul li:hover {
+				background-color: rgba(255, 0, 0, .5);
+			}
+
+			p {
+				width: 60rem;
+				min-height: 7.5rem;
+				border: 0.05rem solid black;
+				padding: 1rem 2rem;
+				position: absolute;
+				top: 4rem;
+				left: 0;
+			}
+
+			p .close {
+				float: right;
+				cursor: pointer;
+				font-size: 1rem;
+			}
+
+			p .close:hover {
+				color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+
+			<ul>
+				<li>London</li>
+				<li>Paris</li>
+				<li>Tokyo</li>
+				<li id="icon">
+					<span class="icon"></span>
+					<span class="icon"></span>
+					<span class="icon"></span>
+				</li>
+			</ul>
+
+			<p style="display:none;">
+				<b>London</b>
+				<span class="close" title="Close">&times;</span><br>
+				<br>London is the capital city of England. <br>
+				From the distance, it looked like a skinny tube,
+				but as we got closer, we could see it flesh out before our eyes. It was tubular, all right,
+				but fatter than we could see from far away. Furthermore, we were also astonished to notice
+				that the building was really in two parts: a pagoda sitting on top of a tubular one-story structure.
+				Standing ten feet away, we could marvel at how much of the pagoda was made up of glass windows.
+				Almost everything under the wonderful Chinese roof was made of glass, unlike the tube that it was sitting on,
+				which only had four. Inside, the tube was gloomy, because of the lack of light. Then a steep,
+				narrow staircase took us up inside the pagoda and the light changed dramatically. All those windows let in a
+				flood of sunshine and we could see out for miles across the flat land.
+			</p>
+
+			<p style="display:none;">
+				<b>Paris</b>
+				<span class="close" title="Close">&times;</span><br>
+				<br>Paris is the capital of France. <br>
+				From the distance, it looked like a skinny tube,
+				but as we got closer, we could see it flesh out before our eyes. It was tubular, all right,
+				but fatter than we could see from far away. Furthermore, we were also astonished to notice
+				that the building was really in two parts: a pagoda sitting on top of a tubular one-story structure.
+				Standing ten feet away, we could marvel at how much of the pagoda was made up of glass windows.
+				Almost everything under the wonderful Chinese roof was made of glass, unlike the tube that it was sitting on,
+				which only had four. Inside, the tube was gloomy, because of the lack of light. Then a steep,
+				narrow staircase took us up inside the pagoda and the light changed dramatically. All those windows let in a
+				flood of sunshine and we could see out for miles across the flat land.
+			</p>
+
+			<p style="display:none;">
+				<b>Tokyo</b>
+				<span class="close" title="Close">&times;</span><br>
+				<br>Tokyo is the capital of Japan. <br>
+				From the distance, it looked like a skinny tube,
+				but as we got closer, we could see it flesh out before our eyes. It was tubular, all right,
+				but fatter than we could see from far away. Furthermore, we were also astonished to notice
+				that the building was really in two parts: a pagoda sitting on top of a tubular one-story structure.
+				Standing ten feet away, we could marvel at how much of the pagoda was made up of glass windows.
+				Almost everything under the wonderful Chinese roof was made of glass, unlike the tube that it was sitting on,
+				which only had four. Inside, the tube was gloomy, because of the lack of light. Then a steep,
+				narrow staircase took us up inside the pagoda and the light changed dramatically. All those windows let in a
+				flood of sunshine and we could see out for miles across the flat land.
+			</p>
+
+		</div>
+
+
+		<script type="text/javascript">
+			var aLi = document.querySelectorAll("li");
+			var aP = document.querySelectorAll("p");
+			var aSpan = document.querySelectorAll(".close");
+
+			for (var i = 0; i < aLi.length - 1; i++) {
+				aLi[i].index = i;
+				aLi[i].onclick = function() {
+					if (aP[this.index].style.display == "none") {
+						for (var k = 0; k < aP.length; k++) {
+							aP[k].style.display = "none";
+							aLi[k].style.backgroundImage = "";
+						}
+						aP[this.index].style.display = "block";
+						aLi[this.index].style.backgroundImage = "linear-gradient(#8f8f8f,#e5e5e5)";
+					} else {
+						aP[this.index].style.display = "none";
+						aLi[this.index].style.backgroundImage = "";
+						aLi[this.index].style.backgroundColor = "black";
+					}
+				}
+			}
+
+			for (var j = 0; j < aSpan.length; j++) {
+				aSpan[j].index = j;
+				aSpan[j].onclick = function() {
+					aP[this.index].style.display = "none";
+					aLi[this.index].style.backgroundImage = "";
+					aLi[this.index].style.backgroundColor = "black";
+				}
+			}
+
+			var oIcon = document.querySelector("#icon");
+			var count = 1;
+			oIcon.onclick = function() {
+				count++;
+				if (count % 2 == 0) {
+					for (var i = 0; i < aP.length; i++) {
+						aP[i].index = i;
+						aP[i].style.display = "block";
+						aP[i].style.position = "static";
+						aLi[i].style.backgroundColor = "rgba(255,0,0,.5)";
+					}
+				} else {
+					for (var i = 0; i < aP.length; i++) {
+						aP[i].index = i;
+						aP[i].style.display = "none";
+						aP[i].style.position = "absolute";
+						aLi[i].style.backgroundColor = "black";
+					}
+				}
+
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>JS弹窗</title>
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+			}
+			button{
+				width:120px;
+				height:40px;
+				margin-top: 50px;
+				margin-left:700px;
+				border:1px solid black;
+				text-align:center;
+				line-height:40px;
+				background-color:cadetblue;
+				color:white;
+				cursor:pointer;
+			}
+			div{
+				width:600px;
+				height:300px;
+				margin:100px auto;
+				border:4px solid black;
+				background-color:pink;
+				display:none; 
+				position:relative;
+			}
+			div span{
+				display:block;
+				width:30px;
+				height:30px;
+				font-size:30px;
+				text-align:center;
+				line-height:30px;
+				position:absolute;
+				top:10px;
+				right:10px;
+				cursor:pointer;
+			}
+			div p{
+				width:600px;
+				height:230px;
+				margin-top:50px;
+				padding-top:20px;
+				background-color:white;
+				text-align:center;
+				border-top:1px solid black;
+			}
+			div p input{
+				width:250px;
+				height:20px;
+				text-align:center;
+				line-height:20px;
+				border-style:groove;
+			}
+			div p b{
+				display:block;
+				float:left;
+				width:80px;
+				height:25px;
+				margin-top:10px;
+				margin-left:150px;
+				text-align:center;
+				line-height:25px;
+				border:1px solid black;
+				background-color:black;
+				color:white;
+				font-size:14px;
+				font-weight:normal;
+				cursor:pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<button>打开弹窗</button>
+        <div>
+			<span>&times;</span>
+			<p>
+				弹窗显示内容<br>
+				<br>账号:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" placeholder="请输入您的账号"><br>
+				<br>密码:&nbsp;&nbsp;&nbsp;&nbsp;<input type="password" placeholder="请输入您的密码"><br>
+				<br>邮箱:&nbsp;&nbsp;&nbsp;&nbsp;<input type="email" placeholder="请输入您的邮箱"><br>
+				<br>
+				<b>提交</b>
+				<b>退出</b>
+			</p>
+		</div>
+		
+		<script type="text/javascript">
+			var oBtn = document.querySelector("button");
+			var oDiv = document.querySelector("div");
+			var closeBtn = document.querySelector("span"); 
+			var closeBtn1 = document.querySelectorAll("b")[1];
+			var submitBtn = document.querySelectorAll("b")[0]; 
+			
+			oBtn.onclick = function(){
+				oDiv.style.display = "block";
+			}
+			
+			closeBtn.onclick = function(){
+				oDiv.style.display = "none";
+			}
+			
+            closeBtn1.onclick = function(){
+				oDiv.style.display = "none";
+			}
+			
+			submitBtn.onclick = function(){
+				alert("数据提交成功");
+				oDiv.style.display = "none";
+			}
+						 
+		</script>
+	</body>
+</html>

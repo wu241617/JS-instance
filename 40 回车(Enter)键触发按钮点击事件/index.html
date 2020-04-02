@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>回车(Enter)键触发按钮点击事件</title>
+		<style type="text/css">
+			@media screen and (min-width:1200px;
+
+			) {
+				html {
+					font-size: 20px;
+				}
+			}
+
+			@media screen and (min-width:800px;
+			) and (max-width:1200px;
+
+			) {
+				html {
+					font-size: 16px;
+				}
+			}
+
+			@media screen and (max-width:800px;
+
+			) {
+				html {
+					font-size: 12px;
+				}
+			}
+
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			p{
+				width:30rem;
+				height:20rem;
+				margin:2rem auto;
+				margin-bottom:0;
+				background-color:rgba(0,0,0,.5);
+				color:white;
+			}
+			form{
+				width:30rem;
+				height:5rem;
+				padding:1.5rem;
+				margin:0 auto;
+				border:0.05rem solid black;
+			}
+			form .text{
+				width:20rem;
+				height:2rem;
+				text-align:center;
+				line-height:2rem;
+			}
+			form .btn{
+				width:5rem;
+				height:2rem;
+				text-align:center;
+				line-height:2rem;
+				background-color:cadetblue;
+				border:0.05rem solid black;
+				border-style:groove;
+				cursor:pointer;
+			}
+			form .btn:hover{
+				background-color:black;
+				color:white;
+			}
+		</style>
+	</head>
+	<body>
+		<p></p>
+         <form action="">
+			 <input type="text" placeholder="请输入您想发送的内容:" class="text">
+			 <input type="button" value="发送" class="btn">
+		 </form>
+		<script type="text/javascript">
+             var oBtn = document.querySelector(".btn");
+			 var oInput = document.querySelector(".text");
+			 var oP = document.querySelector("p");
+			 
+			 function sendMesage(){
+				 oP.innerHTML += oInput.value+"&nbsp;&nbsp;&nbsp;&nbsp;";
+				 oInput.value = "";
+			 }
+			 
+			 oBtn.onclick = function(){
+				sendMesage();
+			 }
+			
+			 
+			 document.onkeydown = function(e){
+			 	var evt = e||window.event
+			 	if(evt.keyCode == 13){
+			 		sendMesage();
+			 	}
+			 }
+			 
+		</script>
+	</body>
+</html>

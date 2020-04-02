@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>手风琴效果</title>
+		<style type="text/css">
+			@media screen and (min-width:1200px;
+
+			) {
+				html {
+					font-size: 20px;
+				}
+			}
+
+			@media screen and (min-width:800px;
+			) and (max-width:1200px;
+
+			) {
+				html {
+					font-size: 16px;
+				}
+			}
+
+			@media screen and (max-width:800px;
+
+			) {
+				html {
+					font-size: 12px;
+				}
+			}
+
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			div {
+				width: 30rem;
+				height: 4rem;
+				margin-left: 30rem;
+				background-image: linear-gradient(#8f8f8f,#E3E3E3);
+				padding-left: 2rem;
+				line-height: 4rem;
+				cursor: pointer;
+			}
+
+			div:hover {
+				background-color: darkgray;
+			}
+
+			div:nth-child(1) {
+				margin-top: 4rem;
+			}
+
+			div .icon {
+				font-size: 1.2rem;
+				margin-left: 22rem;
+			}
+
+			p {
+				width: 30rem;
+				min-height: 10rem;
+				margin-left: 30rem;
+				padding: 1.5rem;
+				border:0.05rem solid darkgrey;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			选项 1
+			<span class="icon"> + </span>
+		</div>
+		<p style="display:none;">
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+			labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+			ut aliquip ex ea commodo consequat.
+		</p>
+		<div>
+			选项 2
+			<span class="icon"> + </span>
+		</div>
+		<p style="display:none;">
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+			labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+			ut aliquip ex ea commodo consequat.
+		</p>
+		<div>
+			选项 3
+			<span class="icon"> + </span>
+		</div>
+		<p style="display:none;">
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+			labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+			ut aliquip ex ea commodo consequat.
+		</p>
+
+		<script type="text/javascript">
+			var aDiv = document.querySelectorAll("div");
+			var aP = document.querySelectorAll("p");
+			var aSpan = document.querySelectorAll("span");
+
+			for (var i = 0; i < aDiv.length; i++) {
+				aDiv[i].index = i;
+				aDiv[i].onclick = function() {
+					if (aP[this.index].style.display == "none") {
+						aP[this.index].style.display = "block";
+						aSpan[this.index].innerHTML = " - ";
+						
+					} else {
+						aP[this.index].style.display = "none";
+						aSpan[this.index].innerHTML = " + ";
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

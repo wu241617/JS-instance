@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>点击式导航栏下拉菜单</title>
+		<style type="text/css">
+			@media screen and (min-width:1200px;
+
+			) {
+				html {
+					font-size: 20px;
+				}
+			}
+
+			@media screen and (min-width:800px;
+			) and (max-width:1200px;
+
+			) {
+				html {
+					font-size: 16px;
+				}
+			}
+
+			@media screen and (max-width:800px;
+
+			) {
+				html {
+					font-size: 12px;
+				}
+			}
+
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			ul,
+			ol {
+				list-style: none;
+			}
+
+			a {
+				text-decoration: none;
+			}
+
+			ul {
+				width: 40rem;
+				height: 4rem;
+
+				margin: 2.5rem auto;
+				background-color: black;
+			}
+
+			ul li {
+				width: 5rem;
+				height: 4rem;
+				float: left;
+				color:white;
+			}
+
+			ul li a {
+				display: block;
+				width: 5rem;
+				height: 4rem;
+				color: white;
+				text-align: center;
+				line-height: 4rem;
+			}
+			
+			ul li:nth-child(4){
+				float:right;
+				width:4rem;
+				padding-top:0.5rem;
+				font-size:1.8rem;
+				cursor:pointer;
+			}
+			
+			ul li a:hover{
+				background-color:rgba(255,0,0,.5);
+			}
+			
+			ol{
+				width:5rem;
+				height:12rem;
+				background-color:darkgray;
+			}
+
+			ol .item {
+				display:block;
+				width: 5rem;
+				height: 4rem;
+			}
+			ol .item a{
+				color:black;
+			}
+			ol .item a:hover{
+				background-color:#CCCCCC;
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li><a href="#">主页</a></li>
+			<li><a href="#">新闻</a></li>
+			<li>
+				<a href="#">下拉菜单</a>
+				<ol style="display:none;">
+					<li class="item"><a href="#"> Link 1 </a></li>
+					<li class="item"><a href="#"> Link 2 </a></li>
+					<li class="item"><a href="3"> Link 3 </a></li>
+				</ol>
+			</li>
+			<li>&#9776;</li>
+		</ul>
+
+		<script type="text/javascript">
+             var oL = document.querySelector("ol");
+			 var aLi = document.querySelectorAll("li");
+			 var oLi = document.querySelector(".item");
+			 
+			 aLi[2].onclick = function(){
+				 if(oL.style.display == "none"){
+					 oL.style.display = "block";
+				 }else{
+					 oL.style.display = "none";
+				 }
+			 }
+		</script>
+	</body>
+</html>

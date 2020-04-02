@@ -1,0 +1,95 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+div {
+    width: 600px;
+    height: 300px;
+    margin: 20px auto;
+    border: 5px solid blueviolet;
+    position: relative;
+    overflow: hidden;
+}
+
+ul {
+    width: 600px;
+    height: 300px;
+    list-style: none;
+    position: relative;
+}
+
+ul li {
+    width: 600px;
+    height: 300px;
+}
+
+ul li img {
+    display: block;
+    width: 600px;
+    height: 300px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+ol {
+    width: 300px;
+    height: 60px;
+    list-style: none;
+    position: absolute;
+    top: 230px;
+    left: 160px;
+    z-index: 999;
+}
+
+ol li {
+    float: left;
+    width: 50px;
+    height: 30px;
+    margin: 10px;
+    border: 1px solid black;
+    background-color: rgba(255, 255, 255, .5);
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+}
+
+ol li:hover,
+span:hover {
+    background-color: rgba(255, 0, 0, .5);
+    color: white;
+}
+
+.active {
+    background-color: rgba(255, 0, 0, .5);
+    color: white;
+}
+
+span {
+    display: block;
+    width: 60px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    border: 1px solid black;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, .5);
+    cursor: pointer;
+}
+
+.left {
+    position: absolute;
+    top: 100px;
+    left: 0px;
+    z-index: 999;
+    opacity: 0;
+}
+
+.right {
+    position: absolute;
+    top: 100px;
+    right: 0px;
+    z-index: 999;
+    opacity: 0;
+}

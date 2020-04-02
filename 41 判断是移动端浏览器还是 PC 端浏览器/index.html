@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>判断是移动端浏览器还是 PC 端浏览器</title>
+		<style type="text/css">
+			
+		</style>
+	</head>
+	<body>
+		<p>
+		JavaScript 判断当期设备是移动端浏览器还是 PC 端浏览器。
+		</p>
+		<hr>
+		<script type="text/javascript">
+			if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+			    document.write("移动")
+			} else {
+			    document.write("PC")
+			}
+		</script>
+	</body>
+</html>

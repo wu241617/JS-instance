@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>侧边栏动画实例 – 页面主体内容向右移动</title>
+		<style type="text/css">
+			@media screen and (min-width:1200px;
+
+			) {
+				html {
+					font-size: 20px;
+				}
+			}
+
+			@media screen and (min-width:800px;
+			) and (max-width:1200px;
+
+			) {
+				html {
+					font-size: 16px;
+				}
+			}
+
+			@media screen and (max-width:800px;
+
+			) {
+				html {
+					font-size: 12px;
+				}
+			}
+
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			#container {
+				width: 40rem;
+				height: 15rem;
+				position: absolute;
+				top: 0;
+				left: -12rem;
+			}
+
+			#right {
+				width: 28rem;
+				height: 15rem;
+				border:0.05rem solid black;
+				padding: 2rem;
+				float: left;
+			}
+
+			#right h2 {
+				margin-bottom: 2rem;
+			}
+
+			#right p {
+				margin-bottom: 2rem;
+			}
+
+			#right span {
+				display: block;
+				float: left;
+				font-size: 2rem;
+				cursor: pointer;
+			}
+
+			#right b {
+				display: block;
+				float: left;
+				margin-left: 1rem;
+				margin-top: 0.5rem;
+				font-size: 1.4rem;
+			}
+
+			#left {
+				width: 12rem;
+				height: 15rem;
+				background-color: black;
+				color: darkgray;
+				float: left;
+				position: relative;
+			}
+
+			#left ul {
+				width: 12rem;
+				height: 15rem;
+				list-style: none;
+			}
+
+			#left ul li {
+				width: 12rem;
+				height: 2.5rem;
+				padding-left: 2rem;
+				line-height: 2.5rem;
+				cursor: pointer;
+			}
+
+			#left ul li:hover {
+				color: white;
+			}
+
+			#left #close {
+				position: absolute;
+				top: 0.5rem;
+				right: 0.5rem;
+				color: white;
+				font-size: 1rem;
+				cursor: pointer;
+			}
+			#left #close:hover{
+				color:red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<div id="left">
+				<ul>
+					<li>About</li>
+					<li>Services</li>
+					<li>Clients</li>
+					<li>Contact</li>
+				</ul>
+				<span id="close">&times;</span>
+			</div>
+
+			<div id="right">
+				<h2>侧边栏实例 - 页面主体向右移动</h2>
+				<p>点击以下菜单图标打开侧边栏，主体内容向右偏移。</p>
+				<span id="open">&#9776;</span><b>打开</b>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+           var oDiv = document.querySelector("#container");
+		   var openBtn = document.querySelector("#open");
+		   var closeBtn = document.querySelector("#close");
+		   
+		   openBtn.onclick = function(){
+			   oDiv.style.backgroundColor = "rgba(0,0,0,0.5)";
+			   oDiv.style.transform = "translateX(12rem)";
+			   oDiv.style.transition = "all 1s";
+		   }
+		   
+		   closeBtn.onclick = function(){
+			   oDiv.style.backgroundColor = "white";
+			   oDiv.style.transform = "translateX(0)";
+			   oDiv.style.transition = "all 1s";
+		   }
+		</script>
+	</body>
+</html>

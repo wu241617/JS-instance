@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>选项卡-幻灯片效果</title>
+		<style type="text/css">
+			@media screen and (min-width:1200px) {
+				html {
+					font-size: 20px;
+				}
+			}
+
+			@media screen and (min-width:800px;
+
+			) and (max-width:1200px) {
+				html {
+					font-size: 16px;
+				}
+			}
+
+			@media screen and (max-width:800px) {
+				html {
+					font-size: 12px;
+				}
+			}
+
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			div {
+				width: 30rem;
+				height: 19rem;
+				margin: 2rem auto;
+				border: 0.1rem solid black;
+				overflow: hidden;
+				position: relative;
+			}
+
+			div p {
+				width: 30rem;
+				height: 15rem;
+				text-align: center;
+				padding-top: 2rem;
+				position: absolute;
+				top: 0;
+				left: 0;
+				color: white;
+			}
+
+			div p b {
+				display: block;
+				margin-top: 2rem;
+				font-size: 1rem;
+			}
+
+			div h1 {
+				width: 30rem;
+				height: 15rem;
+			}
+
+			div ul {
+				width: 30rem;
+				height: 4rem;
+				list-style: none;
+				background-color: black;
+			}
+
+			div ul li {
+				float: left;
+				width: 7.5rem;
+				height: 4rem;
+				text-align: center;
+				line-height: 4rem;
+				color: white;
+				cursor: pointer;
+				opacity:0.9;
+			}
+
+			div ul li:hover {
+				opacity:1;
+			}
+			
+			div li:nth-child(1){
+				background-color:red;
+				opacity:1;
+			}
+
+			div p:nth-child(1) {
+				background-color: red;
+			}
+			
+			div p:nth-child(2) {
+				background-color: green;
+			}
+			
+			div p:nth-child(3) {
+				background-color: blue;
+			}
+			
+			div p:nth-child(4) {
+				background-color: #FFA500;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<p style="z-index:1;">
+				<b>London</b><br>
+				<span>London is the capital city of England.</span>
+			</p>
+			<p>
+				<b>Paris</b><br>
+				<span>Paris is the capital of France.</span>
+			</p>
+			<p>
+				<b>Tokyo</b><br>
+				<span>Tokyo is the capital of Japan.</span>
+			</p>
+			<p>
+				<b>Oslo</b><br>
+				<span>Oslo is the capital of Norway.</span>
+			</p>
+			<h1></h1>
+			<ul>
+				<li>London</li>
+				<li>Paris</li>
+				<li>Tokyo</li>
+				<li>Oslo</li>
+			</ul>
+		</div>
+
+		<script type="text/javascript">
+			var aLi = document.querySelectorAll("li");
+			var aP = document.querySelectorAll("p");
+			var count = 0;
+
+			for (var i = 0; i < aLi.length; i++) {
+				aLi[i].index = i;
+				aLi[i].onclick = function() {
+					count++;
+				    aP[this.index].style.zIndex =count;
+					if(this.index == 0){
+						bgColor();
+						aLi[this.index].style.backgroundColor = "red";
+					} 
+					
+					if(this.index == 1){
+						bgColor();
+						aLi[this.index].style.backgroundColor = "green";
+					}
+					
+					if(this.index == 2){
+						bgColor();
+						aLi[this.index].style.backgroundColor = "blue";
+					}
+					
+					if(this.index == 3){
+						bgColor();
+						aLi[this.index].style.backgroundColor = "#FFA500";
+					}
+				}
+			}
+			
+			function bgColor(){
+				for(var i=0; i<aLi.length; i++){
+					aLi[i].style.backgroundColor = "black";
+				}
+			}
+		</script>
+	</body>
+</html>

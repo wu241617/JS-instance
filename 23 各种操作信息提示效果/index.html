@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>各种操作信息提示效果</title>
+		<style type="text/css">
+			@media screen and (min-width:1200px;) {
+				html{
+					font-size:20px;
+				}
+			}
+			@media screen and (min-width:800px;) and (max-width:1200px;){
+				html{
+					font-size:16px;
+				}
+			}
+			@media screen and (max-width:800px;){
+				html{
+					font-size:12px;
+				}
+			}
+			*{
+				margin:0;
+				padding:0;
+				box-sizing: border-box;
+			}
+			div{
+				width:30rem;
+				height:5rem;
+				margin:3rem auto;
+				border:0.1rem solid black;
+				padding-left:3rem;
+				line-height:5rem;
+				color:white;
+			}
+			div:nth-child(1){
+				background-color:#F44336;
+			}
+			div:nth-child(2){
+				background-color:#4CAF50;
+			}
+			div:nth-child(3){
+				background-color:#2196F3;
+			}
+			div:nth-child(4){
+				background-color:#FF9800;
+			}
+			div .icon{
+				margin-right:2rem;
+				float:right;
+				font-size:1.5rem;
+				cursor:pointer;
+			}
+			div .icon:hover{
+				color:black;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<b>危险！</b>
+			<span>危险操作提示。</span>
+			<span class="icon">&times;</span>
+		</div>
+		<div>
+			<b>成功！</b>
+			<span>成功操作提示。</span>
+			<span class="icon">&times;</span>
+		</div>
+		<div>
+			<b>提示！</b>
+			<span>提示信息修改。</span>
+			<span class="icon">&times;</span>
+		</div>
+		<div>
+			<b>危警告！</b>
+			<span>提示当前操作要注意。</span>
+			<span class="icon">&times;</span>
+		</div>
+		
+		<script type="text/javascript">
+			var aDiv = document.querySelectorAll("div");
+			var aIcon = document.querySelectorAll(".icon");
+			for(var i=0; i<aIcon.length; i++){
+				aIcon[i].index = i;
+				aIcon[i].onclick = function(){
+					aDiv[this.index].style.display = "none";
+				}
+			}
+		</script>
+	</body>
+</html>

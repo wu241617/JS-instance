@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>注册表单</title>
+		<style type="text/css">
+			@media screen and (min-width:1200px;
+
+			) {
+				html {
+					font-size: 20px;
+				}
+			}
+
+			@media screen and (min-width:800px;
+			) and (max-width:1200px;
+
+			) {
+				html {
+					font-size: 16px;
+				}
+			}
+
+			@media screen and (max-width:800px;
+
+			) {
+				html {
+					font-size: 12px;
+				}
+			}
+
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			html,
+			body {
+				height: 60rem;
+				position: relative;
+			}
+
+			div {
+				width: 15rem;
+				height: 10rem;
+				margin: 1rem;
+				margin-top: 0;
+				border: 0.1rem solid black;
+			}
+
+			div h2 {
+				margin: 2rem 0;
+				text-align: center;
+			}
+
+			div button {
+				width: 6.5rem;
+				height: 2rem;
+				margin-left: 4rem;
+				text-align: center;
+				line-height: 2rem;
+				color: white;
+				border: 0.01rem solid black;
+				background-color:seagreen;
+				cursor: pointer;
+				font-size:1rem;
+			}
+
+			div button:hover {
+			opacity: 0.7;
+				
+			}
+
+			p {
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0, 0, 0, .6);
+				position: relative;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+
+			#closeIcon {
+				font-size: 3rem;
+				position: absolute;
+				top: 1rem;
+				right: 1rem;
+				cursor: pointer;
+			}
+
+			#closeIcon:hover {
+				color: red;
+			}
+
+			.float {
+				width: 40rem;
+				height: 50rem;
+				border: 0.1rem solid black;
+				background-color: white;
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				right: 0;
+				left: 0;
+				margin: auto;
+				display: none;
+				z-index: 999;
+				padding: 3rem;
+				border-style: groove;
+				box-shadow: 1rem 1rem 1rem black;
+			}
+			
+			.float h1{
+				width:100%;
+				height:3rem;
+				margin-bottom:2rem;
+				text-align:center;
+				line-height:3rem;
+			}
+			
+			.float hr{
+				margin-bottom:2rem;
+				height:0.25rem;
+				background-color:black;
+			}
+
+			.float label {
+				display: block;
+			}
+
+			.float .checkbox {
+				font-size: 1rem;
+				margin-top: 1rem;
+				margin-left: 1rem;
+				margin-bottom: 2rem;
+				float: left;
+			}
+
+			.float input {
+				display: block;
+				width: 100%;
+				height: 3rem;
+				padding: 1rem;
+				margin: 1rem 0;
+			}
+
+			.float #checkbox {
+				width: 1.5rem;
+				height: 1.5rem;
+				margin-bottom: 2rem;
+				float: left;
+			}
+
+			.float #area {
+				width: 100%;
+				height: 3.5rem;
+				border: 0;
+			}
+
+			.float button {
+				width: 50%;
+				height: 3rem;
+				margin: 0;
+				margin-top: 3rem;
+				float: left;
+				border: 0;
+			}
+
+			.float .closeBtn {
+				background-color: red !important;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<h2>注册表单</h2>
+			<button>注册</button>
+		</div>
+		<p style="display:none;">
+			<span id="closeIcon" title="Close The Page">&times;</span>
+		</p>
+		<div class="float">
+			<h1>注册界面</h1>
+			<hr>
+			<label>Email</label>
+			<input type="text" placeholder="Enter Email" title="请添加此字段.">
+			<label>Password</label>
+			<input type="password" placeholder="Enter Password" title="请添加此字段.">
+			<label>Repeat Password</label>
+			<input type="password" placeholder="Repeat Password" title="请添加此字段.">
+			<input type="checkbox" checked="checked" id="checkbox"><span class="checkbox">Remember me</span>
+			<div id="area"></div>
+			<b>By creating an account you agree to our <a href="#">Terms & Privacy.</a></b>
+			<button class="closeBtn">Cancel</button>
+			<button>Sign Up</button>
+		</div>
+		<script type="text/javascript">
+			var oBtn = document.querySelector("button");
+			var shade = document.querySelector("p");
+			var closeIcon = document.querySelector("#closeIcon");
+			var oDiv = document.querySelector(".float");
+			var closeBtn = document.querySelector(".closeBtn");
+
+			oBtn.onclick = function() {
+				shade.style.display = "block";
+				oDiv.style.display = "block";
+			}
+
+			closeIcon.onclick = function() {
+				shade.style.display = "none";
+				oDiv.style.display = "none";
+			}
+			
+			closeBtn.onclick = function() {
+				shade.style.display = "none";
+				oDiv.style.display = "none";
+			}
+			
+		</script>
+	</body>
+</html>

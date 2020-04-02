@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>屏幕底部弹出信息</title>
+		<style type="text/css">
+			@media screen and (min-width:1200px;
+
+			) {
+				html {
+					font-size: 20px;
+				}
+			}
+
+			@media screen and (min-width:1200px;
+
+			) and (max-width:1200px) {
+				html {
+					font-size: 16px;
+				}
+			}
+
+			@media screen and (max-width:800px;
+
+			) {
+				html {
+					font-size: 12px;
+				}
+			}
+
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			div {
+				padding: 2rem;
+				width: 25rem;
+				height: 20rem;
+				margin: 2.5rem auto;
+				border: 0.1rem solid black;
+			}
+
+			div h2 {
+				padding-bottom: 2rem;
+			}
+
+			div button {
+				border: 0.1rem solid black;
+				padding: 0.2rem 0.6rem;
+				cursor: pointer;
+			}
+
+			div button:hover {
+				background-color: #CCCCCC;
+			}
+
+			span {
+				display: block;
+				width: 10rem;
+				height: 2.5rem;
+				margin-top: 2rem;
+				margin-left: 5rem;
+				border: 0.1rem solid black;
+				background-color: black;
+				color: white;
+				text-align: center;
+				line-height: 2rem;
+				opacity: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<h2>Snackbar / Toast</h2>
+			<p>在屏幕底部弹出消息,作用与使用方法都与Toast类似</p>
+			<br>
+			<p>点击按钮显示提示信息，3 秒后消失</p>
+			<br>
+			<button>显示 Snackbar</button>
+			<span>一些文本...</span>
+		</div>
+
+		<script type="text/javascript">
+			var oBtn = document.querySelector("button");
+			var oSpan = document.querySelector("span");
+
+			oBtn.onclick = function() {
+				oSpan.style.opacity = 1;
+				timer = setInterval(function() {
+					oSpan.style.opacity = 0;
+					clearInterval(timer);
+				}, 3000);
+			}
+			
+		</script>
+	</body>
+</html>

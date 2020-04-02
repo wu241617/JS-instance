@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>瀑布流</title>
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+			}
+			#box{
+				width:700px;
+				margin: 0 auto;
+			}
+			ul{
+				list-style:none;
+				width:200px;
+				margin: 0 auto;
+				margin-left:10px;
+				float:left;
+			}
+			img{
+				width:200px;
+				margin-top:10px;
+				border:1px solid red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<ul></ul>
+			<ul></ul>
+			<ul></ul>
+		</div>
+		
+		<script src="js/ajax.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			//获取页面元素
+			var oBox = document.getElementById("box");
+			var oUl = document.querySelectorAll("ul");
+			//获取文档可视高度
+			var vH = document.documentElement.clientHeight;
+			
+			//最小高度的列
+			function min_height(){
+				var ht = oUl[0].offsetHeight;//初始化默认
+				var index = 0;//记录第几列高度最小
+				for(var i=0; i<oUl.length; i++){
+					if(oUl[i].offsetHeight < ht){
+						ht = oUl[i].offsetHeight;
+						index = i;
+					}
+				}
+				return index;
+			}
+			
+			//加载图片
+			function load_img(){
+				ajax("index.json",function(data){
+					data = (new Function("return" + data))();//解析json 字符串，去掉【】
+					for(var i=0; i<data.length; i++){
+						var oLi = document.createElement("li");
+						var oImg = document.createElement("img");
+						oImg.src = data[i];
+						oLi.appendChild(oImg);
+						oUl[min_height(oUl)].appendChild(oLi);
+					}
+					
+				});
+			}
+			
+			load_img();
+			
+			window.onscroll = function(){//实现图片一直循环加载
+				//鼠标滚动高度
+				var sH = document.documentElement.scrollTop || document.body.scrollTop;//谷歌兼容
+				if(Math.ceil(sH + vH) >= document.body.scrollHeight){//大于等于页面实际高度
+					load_img();//重新加载图片
+				}
+				
+			}
+		</script>
+	</body>
+</html>

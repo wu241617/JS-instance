@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>弹幕</title>
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+			}
+			body{
+				background-color:darkgray;
+			}
+			#container{
+				width:600px;
+				height:500px;
+				margin:100px auto;
+				border:4px solid white;
+			}
+			#container #main1{
+				width:600px;
+				height:450px;
+				position:relative;
+			}
+			#container #main1 img{
+				width:600px;
+				height:450px;
+			}
+			#main1 p{
+				width:600px;
+				height:450px;
+				background-color:rgba(0,0,0,.6);
+				position:absolute;
+				top:0;
+				left:0;
+				color:white;
+			}
+			#main2{
+				width:600px;
+				height:50px;
+				padding-left:10px;
+			}
+			#main2 input{
+				width:330px;
+				height:30px;
+				margin-top:10px;
+				margin-left:10px;
+				border-style:groove;
+			}
+			#main2 button{
+				width:60px;
+				height:30px;
+				margin-top:10px;
+				cursor:pointer;
+				background-color:cadetblue;
+				color:black;
+				border:1px solid black;
+			}
+			#main2 button:hover{
+				background-color:black;
+				color:white;
+				
+			}
+		</style>
+		<script>
+			//动画函数的封装
+			//1,getStyle函数
+			function getStyle(el, property) {
+				if (getComputedStyle) {
+					return getComputedStyle(el)[property];
+				} else {
+					return el.currentStyle[property];
+				}
+			}
+			
+			//减速函数
+			function animate(el,properties) { //el-->元素 properties-->[property属性,targe目标值（到那个位置停下）]
+			    clearInterval(el.timerId);//清除前一个定时器,防止定时器太多,速度越来越快
+				el.timerId = setInterval(function() {
+					
+					for(var property in properties){
+						var current;
+						var target = properties[property];
+						
+						if(property === "opacity"){
+							current = Math.round(parseFloat(getStyle(el,"opacity"))*100);
+						}else{
+							current = parseInt(getStyle(el,property));
+						}
+						
+						var speed = (target - current) / 20;
+						speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+						
+						if(property === "opacity"){
+							el.style.opacity = (current + speed)/100;
+						}else{
+							el.style[property] = current + speed + "px";
+						}
+					}
+			
+				}, 60);
+			}
+		</script>
+	</head>
+	<body>
+		<div id="container">
+			<div id="main1">
+				<img src="img/pic-1.jpg" alt="pic-1" title="城市夜景">
+				<p></p>
+			</div>
+			<div id="main2">
+				<span>弹幕:</span>
+				<input type="text">
+				<button>发送</button>
+				<button>隐藏</button>
+				<button>显示</button>
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+			//分别获取对应的元素节点
+			var oP = document.querySelector("p");
+			var oInput = document.querySelector("input");
+			var oBtn1 = document.querySelectorAll("button")[0];
+			var oBtn2 = document.querySelectorAll("button")[1];
+			var oBtn3 = document.querySelectorAll("button")[2];
+			
+			//发送消息的函数
+			function sendMesage(){
+				//构建span元素
+				var span1 = document.createElement("span");
+				span1.appendChild(document.createTextNode(oInput.value));
+				oP.appendChild(span1);
+				
+				span1.style.position = "absolute";
+				span1.style.top = Math.floor(Math.random()*400) + "px";//随机Top值
+				var spanWidth = span1.offsetWidth;
+				span1.style.left = (600-spanWidth) + "px";
+				
+				//animate(span1,{"left":-spanWidth});
+				span1.style.fontSize = "30px";
+				span1.style.transform = "translateX(-600px) scale(0)";
+				span1.style.transition = "all 8s";
+				oInput.value = "";
+			}
+			
+			//为发送按钮添加事件函数（按钮发送）
+			oBtn1.onclick = function(){
+				sendMesage();
+			}
+			
+			//(键盘发送---回车键）
+			document.onkeydown = function(e){
+				var evt = e||window.event
+				if(evt.keyCode == 13){
+					sendMesage();
+				}
+			}
+			
+			//隐藏按钮添加事件函数
+			oBtn2.onclick = function(){
+				oP.style.display = "none"; 
+			}
+			
+			//显示按钮添加时间函数
+			oBtn3.onclick = function(){
+				oP.style.display = "block";
+			}
+			
+		</script>
+	</body>
+</html>

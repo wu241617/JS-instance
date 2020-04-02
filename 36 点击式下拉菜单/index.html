@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>点击式下拉菜单</title>
+		<style type="text/css">
+			@media screen and (min-width:1200px;
+
+			) {
+				html {
+					font-size: 20px;
+				}
+			}
+
+			@media screen and (min-width:800px) and (max-width:1200px;
+
+			) {
+				html {
+					font-size: 16px;
+				}
+			}
+
+			@media screen and (max-width:800px;
+
+			) {
+				html {
+					font-size: 12px;
+				}
+			}
+			*{
+				margin:0;
+				padding:0;
+				box-sizing: border-box;
+			}
+			#top{
+				width:25rem;
+				height:26rem;
+				border:0.1rem solid black;
+				margin: 0 auto;
+				padding:2rem;
+			}
+			#top h2{
+				margin-bottom:1rem;
+			}
+			#top p{
+				margin-bottom:1rem;
+			}
+			#top span{
+				display:block;
+				width:8rem;
+				height:3rem;
+				text-align:center;
+				line-height:3rem;
+				color:white;
+				background-color:green;
+				border:0.1rem solid black;
+				border-style:groove;
+				cursor:pointer;
+			}
+			#bottom{
+				width:10rem;
+				height:12rem;
+				border:0.05rem solid black;
+				border-radius: 0.5rem;
+				box-shadow: 0.5rem 0.5rem 0.5rem rgba(0,0,0,.5);
+				overflow:hidden;
+			}
+			#bottom ul{
+				width:10rem;
+				height:12rem;
+				list-style:none;
+			}
+			#bottom ul li{
+				width:10rem;
+				height:4rem;
+				padding-left:1.2rem;
+				line-height:4rem;
+				cursor:pointer;
+			}
+			#bottom ul li:hover{
+				background-color:gainsboro;
+			}
+			#bottom ul li a{
+				text-decoration: none;
+				color:black;
+			}
+		</style>
+	</head>
+	<body>
+        <div id="top">
+			<h2>可点击的下拉菜单</h2>
+			<p>点击按钮显示下拉菜单</p>
+			<span>下拉菜单</span>
+			<div id="bottom" style="display:none;">
+				<ul>
+					<li><a href="#">Home</a></li>
+					<li><a href="#">About</a></li>
+					<li><a href="#">Contact</a></li>
+				</ul>
+			</div>
+		</div>
+		<script type="text/javascript">
+             var oSpan = document.querySelector("span");
+			 var oDiv = document.querySelector("#bottom");
+			 var aLi = document.querySelectorAll("li");
+			 
+			 oSpan.onclick = function(){
+				 if(oDiv.style.display == "none"){
+					 oDiv.style.display = "block";
+				 }else{
+					 oDiv.style.display = "none";
+				 }
+			 }
+			 
+			 for(var i=0; i<aLi.length; i++){
+				 aLi[i].onclick = function(){
+					 oDiv.style.display = "none";
+				 }
+			 }
+			 
+		</script>
+	</body>
+</html>

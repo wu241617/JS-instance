@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>计算器</title>
+		<style type="text/css">
+			@media screen and (min-width:1200px;
+
+			) {
+				html {
+					font-size: 20px;
+				}
+			}
+
+			@media screen and (min-width:800px;
+
+			) and (max-width:1200px) {
+				html {
+					font-size: 16px;
+				}
+			}
+
+			@media screen and (max-width:800px) {
+				html {
+					font-size: 12px;
+				}
+			}
+
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			h1 {
+				text-align: center;
+			}
+
+			div {
+				width: 20rem;
+				height: 28rem;
+				margin: 2.5rem auto;
+				padding: 1rem;
+				background-color: #495678;
+				border: 0.1rem solid black;
+				border-radius: 1rem;
+			}
+
+			ul {
+				list-style: none;
+				width: 18rem;
+				height: 28rem;
+			}
+
+			ul li {
+				width: 18rem;
+				height: 4.5rem;
+				margin: 0.5rem 0;
+			}
+
+			ul input {
+				float: left;
+				margin-top: 0.9rem;
+				width: 12rem;
+				height: 2.5rem;
+				padding-right: 1.5rem;
+				background-color: #98D1DC;
+				border-style: inherit;
+				border-radius: 1rem;
+				text-align: right;
+				line-height: 2.5rem;
+				color: white;
+				font-size: 20px;
+			}
+
+			ul li span,
+			ul li button {
+				display: block;
+				float: left;
+				width: 3.2rem;
+				height: 3.2rem;
+				margin: 0.6rem;
+				border-radius: 50%;
+				background-color: #72778B;
+				text-align: center;
+				line-height: 3rem;
+				color: white;
+				height: 3rem;
+				font-size: 1.2rem;
+				cursor: pointer;
+				border: none;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Html Css Javascript 计算器</h1>
+		<div>
+			<ul>
+				<li>
+					<button style="background-color:#E3844C;" id="clear">C</button>
+					<input type="text">
+				</li>
+				<li>
+					<span>7</span>
+					<span>8</span>
+					<span>9</span>
+					<span style="background-color:#DEDEDC; color:black;">+</span>
+				</li>
+				<li>
+					<span>4</span>
+					<span>5</span>
+					<span>6</span>
+					<span style="background-color:#DEDEDC; color:black;">*</span>
+				</li>
+				<li>
+					<span>1</span>
+					<span>2</span>
+					<span>3</span>
+					<span style="background-color:#DEDEDC; color:black;">-</span>
+				</li>
+				<li>
+					<span>0</span>
+					<span style="background-color:#DEDEDC; color:black;">.</span>
+					<span style="background-color:#DEDEDC; color:black;">/</span>
+					<button style="background-color:#E3844C;" id="result">=</button>
+				</li>
+			</ul>
+		</div>
+
+
+		<script type="text/javascript">
+			var clear = document.querySelector("#clear");
+			var result = document.querySelector("#result");
+			var aSpan = document.querySelectorAll("span");
+			var oInput = document.querySelector("input");
+			var str = "";
+
+			clear.onclick = function() {
+				str = "";
+				oInput.value = "";
+			}
+
+			result.onclick = function() {
+				oInput.value = eval(oInput.value);
+				str = eval(oInput.value);//eval()-->函数将字符串当作运算式计算
+			}
+
+			for (var i = 0; i < aSpan.length; i++) {
+				aSpan[i].onclick = function() {
+					str += this.innerHTML;
+					oInput.value = str;
+				}
+			}
+		</script>
+	</body>
+</html>

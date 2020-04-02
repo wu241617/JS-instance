@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>JS进度条</title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0
+			}
+
+			@media screen and (min-width:1200px) {
+				body {
+					font-size: 24px;
+				}
+			}
+
+			@media screen and (min-width:800px) and (max-width:1200px) {
+				body {
+					font-size: 18px;
+				}
+
+			}
+
+			@media screen and (max-width:800px) {
+				body {
+					font-size: 12px;
+				}
+
+			}
+
+			div {
+				width: 600px;
+				height: 250px;
+				margin: 50px auto;
+				border: 4px solid black;
+				border-left: none;
+				border-right: none;
+			}
+
+			div h2 {
+				text-align: center;
+				padding-top: 10px;
+			}
+
+			#tar {
+				width: 100%;
+				height: 30px;
+				border: 1px solid black;
+			}
+
+			#tar p {
+				width: 1%;
+				height: 30px;
+				background-color: lightgreen;
+			}
+
+			div button {
+				width: 80px;
+				height: 30px;
+				margin-left: 250px;
+				text-align: center;
+				line-height: 30px;
+				background-color: black;
+				color: white;
+				border: none;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<h2>JavaScript进度条</h2>
+			<div id="tar">
+				<p></p>
+			</div>
+			<button>点击</button>
+		</div>
+
+		<script type="text/javascript">
+			var oBtn = document.querySelector("button");
+			var tar = document.querySelector("p");
+			var timer = null;
+			var width = 1;
+
+			oBtn.onclick = function() {
+				timer = setInterval(function() {
+					if (width >= 100) {
+						clearInterval(timer);
+						width = 1;
+					} else {
+						width++;
+						tar.style.width = width + '%';
+					}
+				}, 20);
+			}
+		</script>
+	</body>
+</html>

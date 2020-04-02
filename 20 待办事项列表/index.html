@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>待办事项列表</title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			div {
+				width: 30rem;
+				height: 7rem;
+				margin: 1rem auto;
+				margin-bottom: 0;
+				border: 0.1rem solid black;
+				background-color: red;
+			}
+
+			div h2 {
+				margin-top: 1rem;
+				color: white;
+				text-align: center;
+			}
+
+			div input {
+				width: 18rem;
+				height: 1.5rem;
+				margin-top: 1rem;
+				margin-left: 3rem;
+				line-height: 1.5rem;
+				border-style: groove;
+			}
+
+			div button {
+				border: none;
+				width: 4rem;
+				height: 1.7rem;
+				text-align: center;
+				line-height: 1.7rem;
+				background-color: rgba(0, 0, 0, .5);
+				color: white;
+				cursor: pointer;
+			}
+
+			div button:hover {
+				background-color: black;
+			}
+
+			ul {
+				width: 30rem;
+				min-height: 5rem;
+				border: 0.1rem solid black;
+				margin: 0 auto;
+				list-style: none;
+				overflow: hidden;
+			}
+
+			ul li {
+				width: 30rem;
+				height: 3rem;
+				border-bottom: 0.1rem solid darkgray;
+				line-height: 3rem;
+				padding-left: 2rem;
+			}
+
+			ul li:hover {
+				background-color: lavender;
+				cursor: pointer;
+			}
+
+			ul li b {
+				display: block;
+				min-width: 5rem;
+				height: 3rem;
+				line-height: 3rem;
+				float: left;
+			}
+
+			ul li span {
+				display: block;
+				width: 1rem;
+				height: 3rem;
+				margin-right: 1rem;
+				text-align: center;
+				line-height: 3rem;
+				float: right;
+			}
+
+			@media screen and (min-width:1200px) {
+				html {
+					font-size: 20px;
+				}
+			}
+
+			@media screen and (min-width:800px) and (max-width:1200px) {
+				html {
+					font-size: 16x;
+				}
+			}
+
+			@media screen and (max-width:800px) {
+				html {
+					font-size: 12px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<h2>My To Do List</h2>
+			<p><input type="text" placeholder="Title..."><button>Add</button></p>
+		</div>
+		<ul>
+			<li style="color:black;">
+				<b>Hit the grm</b>
+				<span>&times;</span>
+			</li>
+			<li style="color:black;">
+				<b>Pay bills</b>
+				<span>&times;</span>
+			</li>
+			<li style="color:black;">
+				<b>Read a book</b>
+				<span>&times;</span>
+			</li>
+			<li style="color:black;">
+				<b>Buy eggs</b>
+				<span>&times;</span>
+			</li>
+			<li style="color:black;">
+				<b>Run flash</b>
+				<span>&times;</span>
+			</li>
+		</ul>
+
+		<script type="text/javascript">
+			//新节点元素的创建
+			var oInput = document.querySelector("input");
+			var oUl = document.querySelector("ul");
+			//创建新的节点
+			function newNode(text) {
+				var span = document.createElement("span");
+				span.innerHTML = "&times;";
+				var b = document.createElement("b");
+				b.innerHTML = text;
+				var li = document.createElement("li");
+				li.appendChild(b);
+				li.appendChild(span);
+				li.style.color = "black";
+				oUl.appendChild(li);
+			}
+
+
+			//小图标点击事件,删除对应子节点
+			var aClear = document.querySelectorAll("span");
+			var aLi = document.querySelectorAll("li");
+
+			function spanClick(aClear, aLi) {
+				for (var i = 0; i < aClear.length; i++) {
+					aClear[i].index = i;
+					aClear[i].onclick = function() {
+						aLi[this.index].parentNode.removeChild(aLi[this.index]);
+					}
+				}
+			}
+            spanClick(aClear, aLi);
+
+			//添加按钮点击事件
+			var oBtn = document.querySelector("button");
+			oBtn.onclick = function() {
+				newNode(oInput.value);
+				oInput.value = "";
+				aClear = document.querySelectorAll("span");
+				aLi = document.querySelectorAll("li");
+				ob = document.querySelectorAll("b");
+				spanClick(aClear, aLi);
+				liClick(ob, aLi);
+			}
+
+			//li点击事件
+			var ob = document.querySelectorAll("b");
+
+			function liClick(ob, aLi) {
+				for (var i = 0; i < aLi.length; i++) {
+					aLi[i].index = i;
+					aLi[i].onclick = function() {
+						if (this.style.color == "black") { //通过样式的判断，来设置此次单击事件任务是什么
+							this.style.backgroundColor = "rgba(0,0,0,.6)";
+							this.style.color = "white";
+							ob[this.index].style.textDecoration = "line-through"; //"text-decoration:line-through" 
+						} else {
+							this.style.backgroundColor = "white";
+							this.style.color = "black";
+							ob[this.index].style.textDecoration = "none";
+						}
+					}
+				}
+			}
+			liClick(ob, aLi);
+		</script>
+	</body>
+</html>

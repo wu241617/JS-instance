@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>全屏幕侧边栏</title>
+		<style>
+			@media screen and (min-width:1200px;) {
+					html{
+						font-size:20px;
+					}
+				}
+				@media screen and (min-width:800px;) and (max-width:1200px;) {
+					html{
+						font-size:16px;
+					}
+				}
+				@media screen and (max-width:800px;){
+					html{
+						font-size:14px;
+					}
+				}
+				*{
+					margin:0;
+					padding:0;
+					box-sizing:border-box;
+				}
+				#text{
+					width:18rem;
+					height:10rem;
+					padding:1.5rem 2rem;
+					border:0.1rem solid black;
+				}
+				#text span{
+					display:block;
+					font-size:2rem;
+					float:left;
+					cursor:pointer;
+				}
+				#text b{
+					display:block;
+					float:left;
+					margin-left:3rem;
+					margin-top:0.5rem;
+					font-size:1.4em;
+				}
+				#text hr{
+					background-color:red;
+					margin:1rem 0;
+				}
+				#float{
+					width:100%;
+					height:40rem;
+					background-color:black;
+					position:relative;
+					position:absolute;
+					top:0;
+					left:-100%;
+				}
+				#float ul{
+					width:100%;
+					height:40rem;
+					list-style:none;
+				}
+				#float ul li{
+					width:100%;
+					height:4rem;
+					text-align:center;
+					color:darkgray;
+					cursor:pointer;
+				}
+				#float ul li:hover{
+					color:white;
+				}
+				#float #close{
+					position:absolute;
+					top:1rem;
+					right:1rem;
+					color:white;
+					font-size:1.5rem;
+					cursor:pointer;
+				}
+			</style>
+	</head>
+	<body>
+		<div id="text">
+			<h2>侧边栏动画实例</h2>
+			<p>点击以下菜单图标打开侧边栏</p>
+			<hr>
+			<span id="open">&#9776;</span><b>打开</b>
+		</div>
+		<div id="float">
+			<ul>
+				<li>About</li>
+				<li>Services</li>
+				<li>Clients</li>
+				<li>Contact</li>
+			</ul>
+			<span id="close">&times;</span>
+		</div>
+
+		<script type="text/javascript">
+			var openBtn = document.querySelector("#open");
+			var closeBtn = document.querySelector("#close");
+			var oDiv = document.querySelector("#float");
+
+			openBtn.onclick = function() {
+		        oDiv.style.transform = "translateX(100%)";
+				oDiv.style.transition = "all 2s";
+			}
+
+			closeBtn.onclick = function() {
+				oDiv.style.transform = "translateX(-100%)";
+				oDiv.style.transition = "all 2s";
+			}
+		</script>
+	</body>
+</html>

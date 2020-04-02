@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+			}
+			.container{
+				width:400px;
+				height:300px;
+				position:fixed;
+				top:0;
+				bottom:0;
+				left:0;
+				right:0;
+				margin:auto;
+				background-color:pink;
+				border:4px solid black;
+			}
+			.container .txt{
+				width:400px;
+				height:100px;
+				display:flex;
+				border-bottom:2px solid black;
+			}
+			.container .btn{
+				width:350px;
+				height:200px;
+				padding-left:100px;
+				padding-top:20px;
+			}
+			.txt span{
+				display:block;
+				width:100px;
+				height:60px;
+				margin:20px;
+				background-color:white;
+				text-align:center;
+				line-height:60px;
+				border-style:groove;
+			}
+			.btn button{
+				display:block;
+				width:200px;
+				height:30px;
+				background-color:cadetblue;
+				border:1px solid black;
+				color:white;
+				text-align:center;
+				line-height:30px;
+			}
+			.btn button:nth-child(2),.btn button:nth-child(3){
+				margin-top:30px;
+			}
+			.btn button:hover{
+				background-color:black;
+				color:red;
+				cursor:pointer
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="txt">
+				<span>00</span>
+				<span>00</span>
+				<span>00</span>
+			</div>
+			<div class="btn">
+				<button>start</button>
+				<button>pause</button>
+				<button>clear</button>
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+			//分别获取三个显示，小时，分钟，秒钟的span区域元素
+			var oTxt1 = document.querySelectorAll("span")[0];
+			var oTxt2 = document.querySelectorAll("span")[1];
+			var oTxt3 = document.querySelectorAll("span")[2];
+			
+			//分别获取 start pause clear 的三个按钮元素
+			var oBtn1 = document.querySelectorAll("button")[0];
+			var oBtn2 = document.querySelectorAll("button")[1];
+			var oBtn3 = document.querySelectorAll("button")[2];
+			
+			var count = 0;//设置计数值，初始化为0
+			var timer = null;//标记定时器
+			
+			function start(){
+				if(timer){//判断是否有定时器开启，有则关闭，并初始化显示区域为0
+					clear();
+				}
+				timer = setInterval(function(){//开启定时器
+					count++;//计数值循环加1
+					var h = display(parseInt(count/3600));//小时，使用perseInt方法取整
+					var m = display(parseInt(count%3600/60));//分钟
+					var s = display(parseInt(count%60));//秒钟
+					oTxt1.innerHTML = h;//将内容写到相应的区域
+					oTxt2.innerHTML = m;
+					oTxt3.innerHTML = s;
+				},1000);
+			}
+			
+			function pause(){
+				clearInterval(timer);//关闭定时器
+			}
+			
+			function clear(){
+				clearInterval(timer);//关闭定时器
+				count=0;//总计数值清空
+				oTxt1.innerHTML = "00";//恢复初始状态
+				oTxt2.innerHTML = "00";
+				oTxt3.innerHTML = "00";
+			}
+			
+			function display(n){//要是小于10，则更改显示样式
+				if(n<10){
+					return "0"+n;
+				}else{
+					return n;
+				}
+			}
+			
+			oBtn1.onclick = function(){//为每一个按钮添加对应的事件驱动函数
+				start();
+			}
+			
+			oBtn2.onclick = function(){
+				pause();
+			}
+			oBtn3.onclick = function(){
+				clear();
+			}
+		</script>
+	</body>
+</html>

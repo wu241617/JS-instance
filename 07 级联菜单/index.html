@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+
+    </head>
+    <body>
+        <select id="country">
+            <option>国家</option>
+        </select>
+        <select id="city">
+            <option>城市</option>
+        </select>
+		
+        <script>
+			//1，selectedIndex返回被选中的option的index.
+            //2， 写二级联动菜单时，js里一般要用到New Option()，而且一般都是里面呆两个参数，第一个是显示的文本，第二个是value值。
+            var country = ['中国', '美国','英国'];
+            var city = [
+                ['北京', '上海'],
+                ['纽约'],
+                ['伦敦']
+            ];
+            
+            var cou = document.getElementById("country");
+            var cit = document.getElementById("city");
+            //初始化国家下拉列表
+            for(var i = 0; i < country.length; i++) {
+                //新的option
+                var option = new Option()
+                //赋值
+                option.appendChild(document.createTextNode(country[i]))
+                //插入
+                cou.appendChild(option)
+            }
+            //为国家下拉列表添加事件
+            cou.addEventListener('change', function(){
+                //另城市列表变为初始状态，可以注释掉查看效果
+                cit.options.length = 1;
+                //如果国家选择不为默认值
+                if(cou.selectedIndex != 0) {
+                    //遍历相应国家的城市
+                    for(var j = 0; j < city[cou.selectedIndex - 1].length; j++) {
+                        var option2 = new Option(city[cou.selectedIndex-1][j],city[cou.selectedIndex-1][j])
+                        cit.options.add(option2)
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>

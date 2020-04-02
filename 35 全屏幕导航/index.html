@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>全屏幕导航 - 从上到下动画</title>
+		<style type="text/css">
+			@media screen and (min-width:1200px) {
+				html {
+					font-size: 20px;
+				}
+			}
+
+			@media screen and (min-width:800px;
+
+			) and (max-width:1200px) {
+				html {
+					font-size: 16px;
+				}
+			}
+
+			@media screen and (max-width:800px;
+
+			) {
+				html {
+					font-size: 16px;
+				}
+			}
+
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			#left{
+				width:30rem;
+				height:20rem;
+				margin: 0 auto;
+				text-align:center;
+				border:0.1rem solid black;
+				padding:2rem;
+			}
+			#left h2{
+				margin-bottom:2rem;
+			}
+			#left p{
+				margin-bottom:2rem;
+			}
+			#left #open{
+				display:block;
+				float:left;
+				margin-left:10rem;
+				margin-right:2rem;
+				font-size:2rem;
+				cursor:pointer;
+			}
+			#left b{
+				display:block;
+				float:left;
+				margin-top:0.5rem;
+				font-size:1.2rem;
+			}
+			#right{
+				position:fixed;
+				top:0;
+				left:0;
+				width:100%;
+				height:0%;
+				background-color:black;
+				color:darkgray;
+				transition: all 1.5s;
+			}
+			#right ul{
+				width:90%;
+				height:100%;
+				list-style:none;
+				opacity: 0;
+			}
+			#right ul li{
+				width:90%;
+				height:15%;
+				text-align:center;
+				padding: 1rem 0;
+			    color:darkgray;
+				cursor:pointer;
+			}
+			#right ul li:hover{
+				color:white;
+			}
+			#right #close{
+				cursor:pointer;
+				color:white;
+				font-size:2rem;
+				float:right;
+			}
+			#right #close:hover{
+				color:red !important;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="left">
+			<h2>全屏幕导航 - 从上到下动画</h2>
+			<p>点击以下菜单图标打开导航菜单</p>
+			<span id="open">&#9776;</span><b>打开</b>
+		</div>
+		
+		<div id="right">
+			<span id="close">&times;</span>
+			<ul>
+				<li>About</li>
+				<li>Services</li>
+				<li>Clients</li>
+				<li>Contact</li>
+			</ul>
+		</div>
+
+
+		<script type="text/javascript">
+             var closeBtn = document.querySelector("#close");
+			 var openBtn = document.querySelector("#open");
+			 var oDiv = document.querySelector("#right");
+			 var oUl = document.querySelector("ul");
+			 
+			 closeBtn.onclick = function(){
+				 oDiv.style.height = "0%";
+				 oUl.style.opacity = 0;
+				 this.style.display = "none";
+			 }
+			 
+			 openBtn.onclick = function(){
+				 oDiv.style.height = "100%";
+				  oUl.style.opacity = 1;
+				  closeBtn.style.display = "block";
+			 }
+		</script>
+	</body>
+</html>
