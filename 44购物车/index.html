@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>huawei_shopping</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <script>
+        window.onload = function() {
+            var leftbtns = document.getElementsByClassName('left-btn'); //两个左按钮
+            var rightbtns = document.getElementsByClassName('right-btn'); //两个右按钮
+            var numitems = document.getElementsByClassName('num-item'); //两个计数器
+            var pricefixeds = document.getElementsByClassName('price-fixed'); //两单价
+            var beginprices = document.getElementsByClassName('price-1'); //两个小计总和
+
+            var checkAllBoxs = document.getElementsByClassName('checkAllBox'); //两个全选按钮
+            var itemsBox = document.getElementsByClassName('item'); //两个子按钮
+            var totle = 0;
+            var pricetotle = document.getElementsByClassName('price-2')[0]; //总价
+            var count = 0;
+            var countNum = document.getElementsByClassName('count-name')[0];
+            for (var i = 0; i < leftbtns.length; i++) {
+                leftbtns[i].num = i;
+                leftbtns[i].onclick = function() {
+                    if (numitems[this.num].value == "1") {
+                        addClass(leftbtns[this.num], "disabled");
+                    } else {
+                        numitems[this.num].value = "" + (parseInt(numitems[this.num].value) - 1);
+                        begincountminus(this.num);
+                        totleprice();
+                    }
+
+                }
+
+            }
+            for (var i = 0; i < rightbtns.length; i++) {
+                rightbtns[i].num = i;
+                rightbtns[i].onclick = function() {
+                    numitems[this.num].value = "" + (parseInt(numitems[this.num].value) + 1);
+                    begincountadd(this.num);
+                    removeClass(leftbtns[this.num], "disabled");
+                    totleprice();
+                }
+
+            }
+            //当点击两个全选box
+            for (var i = 0; i < checkAllBoxs.length; i++) {
+                checkAllBoxs[i].onclick = function() {
+                    for (var j = 0; j < itemsBox.length; j++) {
+                        itemsBox[j].checked = this.checked;
+                    }
+                    totleprice();
+                }
+
+
+            }
+
+            //当点击的两个item都选中
+            for (var i = 0; i < itemsBox.length; i++) {
+                itemsBox[i].onclick = function() {
+                    totleprice(); //设置最下方的总价
+
+
+                    //改变两个全选框的状态
+                    for (var j = 0; j < checkAllBoxs.length; j++) {
+                        checkAllBoxs[j].checked = true;
+                    }
+
+                    for (var x = 0; x < itemsBox.length; x++) {
+                        if (!itemsBox[x].checked) {
+                            for (var z = 0; z < checkAllBoxs.length; z++) {
+                                checkAllBoxs[z].checked = false;
+                            }
+                        }
+                    }
+
+
+                }
+            }
+
+
+
+            //累计总价和数量
+            function totleprice() {
+                totle = 0;
+                count = 0;
+                for (var i = 0; i < itemsBox.length; i++) {
+                    if (itemsBox[i].checked) {
+                        totle += parseInt(beginprices[i].innerHTML.replace(/[^0-9]/ig, "").slice(0, -2));
+                        count += parseInt(numitems[i].value);
+                    }
+
+                }
+                pricetotle.innerHTML = "¥&nbsp;" + totle + ".00";
+                countNum.innerHTML = count;
+            }
+
+
+
+            //增加数量后改变每个的小计
+            function begincountadd(i) { //每一个小计总和显示。i为小计的下标
+                var price = parseInt(beginprices[i].innerHTML.replace(/[^0-9]/ig, "").slice(0, -2)) +
+                    parseInt(pricefixeds[i].innerHTML.replace(/[^0-9]/ig, "").slice(0, 4));
+                beginprices[i].innerHTML = "¥&nbsp;" + price + ".00";
+
+            }
+
+            function begincountminus(i) { //每一个小计总和显示。i为小计的下标
+                var price = parseInt(beginprices[i].innerHTML.replace(/[^0-9]/ig, "").slice(0, -2)) -
+                    parseInt(pricefixeds[i].innerHTML.replace(/[^0-9]/ig, "").slice(0, 4));
+                beginprices[i].innerHTML = "¥&nbsp;" + price + ".00";
+
+            }
+
+
+
+
+
+            //添加类
+            function addClass(obj, cn) {
+                if (!hasClass(obj, cn)) {
+                    obj.className += " " + cn;
+                }
+            }
+            //判断是否有指定的class属性
+            function hasClass(obj, cn) {
+                //创建正则表达式
+                var reg = new RegExp("\\b" + cn + "\\b");
+                return reg.test(obj.className);
+            }
+            //删除一个元素指定的class属性即用空串代替
+            function removeClass(obj, cn) {
+                //创建正则表达式
+                var reg = new RegExp("\\b" + cn + "\\b");
+                obj.className = obj.className.replace(reg, "");
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="layout container">
+        <span>我的购物车</span>
+    </div>
+    <div class="main container">
+        <div class="top-title clearfix">
+            <div class="checkboxAll fl">
+                <input type="checkbox" class="checkAllBox" />全选
+            </div>
+            <ul class="fl clearfix">
+                <li>商品</li>
+                <li>单价</li>
+                <li>数量</li>
+                <li>小计</li>
+                <li>操作</li>
+            </ul>
+        </div>
+        <div class="hr-20"></div>
+        <form action="" id="cart-form">
+            <div class="goods">
+                <div class="total-good clearfix">
+                    <div class="left-checkedbox fl">
+                        <input type="checkbox" class="item">
+                    </div>
+                    <div class="message fl">
+                        <div class="good-message clearfix">
+                            <a href="javascript:;"><img src="https://res.vmallres.com/pimages//product/6901443361045/428_428_4A76870AFC99BE8A2EED85E9C4BF1F39E7BE1188A34D58D6mp.png" alt=""></a>
+                            <ul class="fl">
+                                <li>
+                                    <a href="javascript:;" class="a-name"> HUAWEI nova 6 5G双模全网通 8GB+128GB 麒麟990芯片 前置3200万像素（蜜语红·星耀版）</a>
+                                    <p class="p-info">蜜语红 5G SA/NSA双模 8GB+128GB 官方标配</p>
+                                </li>
+                                <li><span class="price-fixed">¥&nbsp;3499.00</span></li>
+                                <li>
+                                    <div class="select-num">
+                                        <input type="number" class="num-item" value="1">
+                                        <p class="select-btn">
+                                            <a href="javascript:;" class="disabled left-btn">−</a>
+                                            <a href="javascript:;" class="right-btn">+</a>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="price-1">
+                                    ¥ 3499.00
+                                </li>
+                                <li><a href="javascript:;" class="p-del">删除</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="hr-20"></div>
+            <div class="goods">
+                <div class="total-good clearfix">
+                    <div class="left-checkedbox fl">
+                        <input type="checkbox" class="item">
+                    </div>
+                    <div class="message fl">
+                        <div class="good-message clearfix">
+                            <a href="javascript:;"><img src="https://res.vmallres.com/pimages//product/6901443393022/428_428_6B10871EAE2117405D8D8E60D71E6506BAAD784E8A5F3E83mp.png" alt=""></a>
+                            <ul class="fl">
+                                <li>
+                                    <a href="javascript:;" class="a-name"> HUAWEI nova 7 Pro 5G 前置3200万追焦双摄 50倍潜望式变焦四摄  麒麟985 5G SoC 8GB+128GB 全网通版（绮境森林）</a>
+                                    <p class="p-info">绮境森林 5G全网通 8GB+128GB 官方标配</p>
+                                </li>
+                                <li><span class="price-fixed">¥&nbsp;3699.00</span></li>
+                                <li>
+                                    <div class="select-num">
+                                        <input type="number" class="num-item" value="1">
+                                        <p class="select-btn">
+                                            <a href="javascript:;" class="disabled left-btn">−</a>
+                                            <a href="javascript:;" class="right-btn">+</a>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="price-1">
+                                    ¥ 3699.00
+                                </li>
+                                <li><a href="javascript:;" class="p-del">删除</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="settle-account container clearfix">
+                <div class="select-del fl">
+                    <div class="checkboxAll-2">
+                        <input type="checkbox" class="checkAllBox">全选
+                    </div>
+                    <a href="javascript:;">删除</a>
+                </div>
+                <div class="pay-btn fr"><a href="javascript:;">立即结算</a></div>
+                <div class="pay-price fr">
+                    <p><label>总计：</label> <span class="price-2">¥&nbsp; 0.00</span></p>
+                    <div class="total-choose">已选择
+                        <em class="count-name">0</em>件商品
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

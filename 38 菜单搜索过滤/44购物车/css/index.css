@@ -1,0 +1,312 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    scroll-behavior: smooth;
+    width: 100%;
+    background-color: #f5f5f5;
+}
+
+a {
+    text-decoration: none;
+    /* 去a标签下滑线 */
+    color: black;
+}
+
+input,
+button,
+img {
+    border: none;
+    outline: none;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.clearfix::after {
+    content: "";
+    display: block;
+    height: 0;
+    visibility: hidden;
+    clear: both;
+}
+
+.clearfix {
+    zoom: 1;
+}
+
+.container {
+    width: 1220px;
+    margin: 0 auto;
+}
+
+.layout {
+    height: 52px;
+}
+
+.layout>span {
+    margin-left: 26px;
+    font-size: 22px;
+    line-height: 36px;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.main {
+    background-color: #f5f5f5;
+}
+
+.main .top-title {
+    line-height: 40px;
+    padding-left: 40px;
+    color: #a4a4a4;
+    background-color: #fff;
+}
+
+.checkAllBox {
+    margin-right: 10px;
+}
+
+.main .top-title .checkboxAll {
+    float: left;
+    width: 150px;
+}
+
+.main .top-title ul>li {
+    float: left;
+    font-size: 12px;
+}
+
+.main .top-title ul>li:first-child {
+    width: 450px;
+    text-align: left;
+    margin-left: 0;
+}
+
+.main .top-title ul>li:not(:first-child) {
+    width: 100px;
+    margin-left: 30px;
+    min-height: 14px;
+    text-align: center;
+}
+
+.hr-20 {
+    height: 20px;
+}
+
+form {
+    margin: 0;
+    padding: 0;
+    background-color: whitesmoke;
+}
+
+.total-good {
+    background: #fff;
+    padding-left: 40px;
+    margin-top: 10px;
+    padding-top: 20px;
+}
+
+.left-checkedbox {
+    margin: 43px 3px 0 0;
+}
+
+.left-checkedbox .item {
+    margin-right: 10px;
+}
+
+.message {
+    width: 1130px;
+    font-size: 14px;
+}
+
+.good-message {
+    margin-bottom: 18px;
+    position: relative;
+}
+
+.good-message>a {
+    width: 100px;
+    height: 100px;
+    float: left;
+    margin-right: 20px;
+    position: relative;
+}
+
+.good-message>a>img {
+    width: 100%;
+    height: 100%;
+}
+
+.good-message>ul>li {
+    float: left;
+    width: 100px;
+    margin-left: 30px;
+    min-height: 14px;
+    text-align: center;
+}
+
+.good-message>ul>li:first-child {
+    width: 450px;
+    text-align: left;
+    margin-left: 0;
+}
+
+.good-message>ul>li:first-child .a-name {
+    display: block;
+    margin-bottom: 2px;
+    line-height: 20px;
+}
+
+.good-message>ul>li:first-child .p-info {
+    color: #666;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    line-height: 17px;
+}
+
+.good-message>ul>li:nth-of-type(2) {
+    width: 140px;
+    margin-left: 10px;
+    margin-right: -20px;
+}
+
+.good-message>ul>li:nth-of-type(2)>span {
+    display: block;
+    margin-bottom: 3px;
+}
+
+.select-num {
+    display: block;
+    border: 1px solid #d6d6d6;
+    width: 86px;
+    margin: 0 auto;
+    height: 20px;
+    border-radius: 2px;
+    position: relative;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.select-num input.num-item {
+    width: 42px;
+    height: 20px;
+    position: absolute;
+    top: 0;
+    left: 22px;
+    text-align: center;
+    border: 1px solid #d6d6d6;
+    border-top: none;
+    border-bottom: none;
+    z-index: 1;
+}
+
+.select-num .select-btn {
+    width: 86px;
+    position: absolute;
+    top: 1px;
+    left: 1px;
+}
+
+.select-num .select-btn>a {
+    width: 21px;
+    height: 20px;
+    line-height: 19px;
+    float: left;
+    font-size: 16px;
+    text-align: center;
+    color: #717171;
+}
+
+.select-num .select-btn>a:last-child {
+    float: right;
+}
+
+.select-num .select-btn a.disabled {
+    color: #d6d6d6;
+}
+
+.good-message>ul>li.price-1 {
+    color: #ca141d;
+    font-weight: 700;
+}
+
+.good-message>ul>li:last-child a {
+    color: #a4a4a4;
+}
+
+.settle-account {
+    background: #fff;
+    height: 60px;
+    margin-top: 10px;
+}
+
+.settle-account .select-del {
+    line-height: 60px;
+    font-size: 12px;
+}
+
+.settle-account .select-del .checkboxAll-2 {
+    float: left;
+    margin-left: 40px;
+}
+
+.settle-account .select-del>a {
+    float: left;
+    margin-left: 20px;
+}
+
+.settle-account .pay-btn a {
+    width: 180px;
+    height: 60px;
+    line-height: 60px;
+    display: block;
+    background: #ca151e;
+    font-size: 18px;
+    color: #fff;
+    text-align: center;
+}
+
+.settle-account .pay-price {
+    padding-right: 30px;
+    margin-top: 7px;
+    text-align: right;
+}
+
+.settle-account .pay-price p>span {
+    color: #ca151e;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.settle-account .pay-price .total-choose {
+    color: #a4a4a4;
+    font-size: 12px;
+}
+
+.settle-account .pay-price .total-choose em {
+    color: #ca151e;
+    margin: 0 5px;
+    font-weight: 700;
+    font-style: normal;
+}
